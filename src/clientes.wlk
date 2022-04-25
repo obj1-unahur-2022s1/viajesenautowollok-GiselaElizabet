@@ -18,7 +18,7 @@ object anaMaria {
 	 else {
 	  return 25 }
 	}
-	method esEconomicamenteEstable() = estable  // cómo negar en consola o modificar este método, para probar la segunda rama del método precioPorKm
+	method esEconomicamenteEstable() = estable  // cómo negar en consola o modificar este método, para probar la segunda rama de precioPorKm
 	 		
 	method esCliente() = esCliente
 	
@@ -38,9 +38,10 @@ object teresa {
  object melina {
 	var precioPorKm = 0
 	var esCadeteDe
+    const esCliente= false
 	
 	
-	       
+	method esCliente() = esCliente       
 	method esCadeteDe()= esCadeteDe
 	
 	method esCadeteDe(cliente){

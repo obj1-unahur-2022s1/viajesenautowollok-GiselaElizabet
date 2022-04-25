@@ -66,11 +66,14 @@ object lucia {
      reemplazaA = remisera
      return reemplazaA}
     
-    method precioViajeComo(remisera, cliente , kms){
-       precioViaje = remisera.precioViaje(cliente , kms)
+    method precioViajeComo(remisera, pasajero , kms){
+     if (pasajero.esCliente()){
+       precioViaje = remisera.precioViaje(pasajero , kms)
+       return precioViaje}
+     else {precioViaje = remisera.precioViaje(melina , kms)
        return precioViaje}
     
-      
+    }  
  } 
 
 
