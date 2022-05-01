@@ -1,57 +1,63 @@
-import cooperativa.*
+/*
+ * Clientes: Bien (-) Se usan variables que no son necesarias, y faltan setters.
+ */
+
+/* No es necesario importar cooperativa */
+
 object  ludmila {
-	var precioPorKm = 18	
-	var esCliente= true
-	method precioPorKm() = precioPorKm	
-	method esCliente() = esCliente
-	
+	// es innecesario utilizar la variable precioPorKm 
+	// (el enunciado aclara que es fijo e inamovible) 
+	// tampoco haría falta la variable esCliente.
+	method precioPorKm() = 18	
 }
 
 object anaMaria {	
-	var precioPorKm = 0
+	// No es necesaria la variable precioPorKm porque no es necesario que el objeto
+	// anaMaria la "recuerde". El mismo método de consulta precioPorKm() sabe responder
+	// el valor.
+	// esCliente tampoco es necesaria ni variable ni método.
+	// falta método para cambiar la estabilidad económica de anaMaria, te dejo una
+	// forma de hacerlo que sería la ideal.
 	var estable= true
-	var esCliente= true
 	
-	method precioPorKm(){
-	 if ( self.esEconomicamenteEstable()) {
-	  return 30}
-	 else {
-	  return 25 }
-	}
+	method precioPorKm() = if (self.esEconomicamenteEstable()) 30 else 25
+
 	method esEconomicamenteEstable() = estable  // cómo negar en consola o modificar este método, para probar la segunda rama de precioPorKm
-	 		
-	method esCliente() = esCliente
-	
+
+	method cambiarEstabilidadEconomica() { estable = not estable }
 
 }
 
 object teresa {
+	// var esCliente no es necesaria ni el método de consulta.
+	// falta el método para cambiar el precio por Km, te dejo un ejemplo de como hacerlo
 	var precioPorKm = 22
-	var esCliente= true
 	
 	method precioPorKm() = precioPorKm
 	
-	method esCliente() = esCliente
-	
+	method cambiarPrecioPorKm(nuevoPrecio) { precioPorKm = nuevoPrecio }
 	
 }
  object melina {
-	var precioPorKm = 0
+	// melina no necesita recordar el precioPorKm ya que se define por la cliente para la que trabaja.
+	// tampoco es necesaria la constante esCliente ni el método esCliente()
 	var esCadeteDe
-    const esCliente= false
 	
-	
-	method esCliente() = esCliente       
 	method esCadeteDe()= esCadeteDe
 	
 	method esCadeteDe(cliente){
+		// No se debe utilizar return en métodos que realizan acciones como este caso, 
+		// que el propósito es definir de quién es cadete melina. Se explicó en varias 
+		// ocasiones que los métodos deben ser getter o setter (consulta o acción), y 
+		// en ningún caso (por ahora) se permite combinarlos.
 		esCadeteDe = cliente
-		return esCadeteDe}
+	}
 		
-	method	precioPorKm() = precioPorKm
+	method	precioPorKm() = esCadeteDe.precioPorKm() - 3
+	// es importante respetar el contrato, melina debe saber responder al precioPorKm igual que
+	// el resto de los clientes
 	
-	method precioPorKmComo(cliente) {
-		precioPorKm = cliente.precioPorKm() - 3
-		return precioPorKm
-	  	}
+	// No es necesario el método precioPorKmComo(cliente) ya que el objeto melina
+	// debe poder recordar de que cliente esCadete, para eso es la variable. 
+	
 }
