@@ -1,3 +1,9 @@
+/*
+ * Test: B(-) Te corregí los test por la utilización de métodos incorrectos que ya vimos
+ * en el detalle de remiseras y clientes.
+ * Faltaría hacer test para validar el funcionamiento de intercambiarRemiseras().
+ * El resto de los test OK
+ */
 import remiseras.*
 import clientes.*
 import cooperativa.*
@@ -49,7 +55,7 @@ test "viaje de juana"{
     juana.precioViaje(anaMaria , 2)
 	juana.precioViaje(teresa , 2)
 	
-	 assert.equals(200 ,juana.precioViaje(ludmila , 10) )
+	assert.equals(200 ,juana.precioViaje(ludmila , 10) )
     assert.equals(200 ,juana.precioViaje( anaMaria , 10) )
     assert.equals(200 ,juana.precioViaje(teresa , 10) )
     assert.equals(100 ,juana.precioViaje( anaMaria , 2) )
@@ -77,10 +83,8 @@ test "viaje de roxana"{
 
 test "viaje de lucia" {
 	lucia.reemplazaA(roxana)
-	lucia.precioViajeComo(roxana , melina ,10)   // cómo relacionar a melina y lucia para resolver este error
-	melina.precioPorKmComo(ludmila)
-	
-	assert.equals(150, lucia.precioViajeComo(roxana, melina ,10))
+	melina.esCadeteDe(ludmila)
+	assert.equals(150, lucia.precioViaje(melina ,10))
 }
 
 test "elección de remisera"{

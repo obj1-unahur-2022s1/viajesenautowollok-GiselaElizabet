@@ -1,79 +1,84 @@
-
+/*
+ * Remiseras: R (se combina return dentro de métodos setter y no se respeta polimorfismo)
+ */
 import clientes.*
-import cooperativa.*
+// no es necesario importar objetos del archivo cooperativa
 
 object roxana { 
-	var precioViaje = 0
-	method precioViaje()= precioViaje 
-	method precioViaje(cliente , kms){
-	  precioViaje =(cliente.precioPorKm() * kms)
-	  return precioViaje
-	}
+	// no es necesario utilizar var precioViaje
+	// No es correcta la implementación que se pedía para precioViaje(cliente,kms), ya que dentro de un método 
+	// que debe ser getter (de consulta), no se debe realizar una asignación de valor
+	// a una variable. Te dejo la forma correcta y resumida.
 	
+	method precioViaje(cliente , kms) = cliente.precioPorKm() * kms
+
 }
 
 
 
 object gabriela {
-	var precioViaje = 0
-	method precioViaje()= precioViaje
-	method precioViaje(cliente , kms){
-	 precioViaje = (cliente.precioPorKm() * kms * 1.2)
-	 return precioViaje
-	}
+	// no es necesario utilizar var precioViaje
+	// No es correcta la implementación que se pedía para precioViaje(cliente,kms), ya que dentro de un método 
+	// que debe ser getter (de consulta), no se debe realizar una asignación de valor
+	// a una variable. Te dejo la forma correcta y resumida.
+	// El método precioViaje() no es correcto. El enunciado indicaba que se debía implementar
+	// con 2 parámetros (cliente y kms).
+	method precioViaje(cliente , kms) = cliente.precioPorKm() * kms * 1.2
 }
 
 
 object mariela{
-	var precioViaje= 0
-	method precioViaje()= precioViaje
-	method precioViaje(cliente, kms){
-		
-		precioViaje = 50. max((cliente.precioPorKm() * kms))
-		return precioViaje
-	}
+	// no es necesario utilizar var precioViaje
+	// No es correcta la implementación que se pedía para precioViaje(cliente,kms), ya que dentro de un método 
+	// que debe ser getter (de consulta), no se debe realizar una asignación de valor
+	// a una variable. Te dejo la forma correcta y resumida.
+	// El método precioViaje() no es correcto. El enunciado indicaba que se debía implementar
+	// con 2 parámetros (cliente y kms).
+	// Bien utilizado el método max() !!
+	method precioViaje(cliente, kms) = 50.max(cliente.precioPorKm() * kms)
 	
 }
 
 
 object juana {
-	var precioViaje = 0
+	// no es necesario utilizar var precioViaje
+	// No es correcta la implementación que se pedía para precioViaje(cliente,kms), ya que dentro de un método 
+	// que debe ser getter (de consulta), no se debe realizar una asignación de valor
+	// a una variable. Te dejo la forma correcta y resumida.
+	// El método precioViaje() no es correcto. El enunciado indicaba que se debía implementar
+	// con 2 parámetros (cliente y kms).
+	// Es innecesario utilizar la condición cliente.esCliente() dentro del método precioViaje(cliente,kms)
+	// por lo que destacamos en la corrección de clientes. Te dejo una posible implementación correcta para 
+	// ese método y además la forma resumida.
 	
-	method precioViaje()= precioViaje
-	
-    method precioViaje(cliente , kms)  {
-     if (cliente.esCliente() and (kms <= 8))  {
-         precioViaje = 100
-	   return  100}
-	  
-	 else  {
-	 	precioViaje=200
-	 	return 200}
-	 } 
+    method precioViaje(cliente , kms) = if(kms <= 8)  { 100 } else  { 200 }
 	 
 }
 
 
 object lucia {
-	var precioViaje = 0
+	// no es necesario utilizar var precioViaje
+	// No es correcta la implementación que se pedía para precioViaje(cliente,kms), ya que dentro de un método 
+	// que debe ser getter (de consulta), no se debe realizar una asignación de valor
+	// a una variable. Te dejo la forma correcta y resumida.
+	// Mismo problema con el método reemplazaA(rermisera). No se debe usar return dentro de un
+	// método de acción (setter)
+	// El método precioViaje() no es correcto. El enunciado indicaba que se debía implementar
+	// con 2 parámetros (cliente y kms).
+	// El método precioViajeComo(remisera,pasajero,kms) es innecesario. Te dejo una forma de 
+	// implementar correctamente el método precioViaje(cliente,kms) que respeta el contrato y 
+	// cumple con el polimorfismo
+
     var reemplazaA 
-    
-    method precioViaje() = precioViaje
     
     method reemplazaA()= reemplazaA
     
     method reemplazaA(remisera){
      reemplazaA = remisera
-     return reemplazaA}
+    }
     
-    method precioViajeComo(remisera, pasajero , kms){
-     if (pasajero.esCliente()){
-       precioViaje = remisera.precioViaje(pasajero , kms)
-       return precioViaje}
-     else {precioViaje = remisera.precioViaje(melina , kms)
-       return precioViaje}
+    method precioViaje(cliente,kms) = reemplazaA.precioViaje(cliente,kms)
     
-    }  
  } 
 
 
